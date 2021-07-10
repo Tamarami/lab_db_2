@@ -1,0 +1,28 @@
+.row
+  .col-xs-12
+    .text-right
+      = link_to 'Добавить новое резюме', new_resume_path, class: 'btn btn-info'
+    .margin-top-20
+    table.table.table-striped.table-bordered.table-hover.table-sm.table-responsive
+      thead
+        tr
+          th Фамилия
+          th Имя
+          th Образование
+          th Стаж
+          th Должность по профессии
+          th Желаемая работа
+          th Желаемая зарплата
+      tbody
+        - @resumes.each do |item|
+          tr
+            td= item.applicant_surname
+            td= item.name
+            td= item.applicant_education
+            td= item.experience
+            td= item.profession_position
+            td= item.desired_work
+            td= item.desired_wage
+
+
+             / middle_name, year_birth, gender, region_residence, address, applicant_education, phone, applicant_email, desired_work, desired_wage, profession_position, experience, proficiency_languages, presence_driver_license, user_id, region_id, handbook_vacancy_id, education_id

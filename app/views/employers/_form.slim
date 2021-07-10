@@ -1,0 +1,24 @@
+= form_for @employer do |f|
+  .form-group
+    = f.label :region_id, 'Регион', class: 'control-label'
+    = f.collection_select :region_id, Region.ordered, :id, :name, { include_blank: true }
+  .form-group
+    = f.label :name, 'Работодатель', class: 'control-label'
+    = f.text_field :name, class: 'form-control', autofocus: true
+  .form-group
+    = f.label :contact_phone_number, 'Контактный телефон', class: 'control-label'
+    = f.text_field :contact_phone_number, class: 'form-control'
+  .form-group
+    = f.label :contact_person_surname, 'Фамилия контактного лица', class: 'control-label'
+    = f.text_field :contact_person_surname, class: 'form-control', autofocus: true
+  .form-group
+    = f.label :actual_address, 'Адрес', class: 'control-label'
+    = f.text_field :actual_address, class: 'form-control'
+  .form-group
+    = f.label :contact_e_mail, 'e_mail', class: 'control-label'
+    = f.text_field :contact_e_mail, class: 'form-control'
+  .btn-group
+    = link_to 'Назад', employers_path, class: 'btn btn-default'
+    = f.submit 'Сохранить', class: 'btn btn-primary'
+    - if @employer.persisted?
+      = link_to 'Удалить', employer_path(@employer), data: { confirm: 'Вы уверены?' }, method: :delete, class: 'btn btn-danger'

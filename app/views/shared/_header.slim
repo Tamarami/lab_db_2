@@ -1,0 +1,13 @@
+.margin-bottom-20
+  ul.nav.nav-tabs
+    li= link_to 'Вакансии', vacancies_path
+    li= link_to 'Резюме', resumes_path
+    li= link_to 'Работодатели', employers_path
+    li= link_to 'Соискатели', users_path
+    li
+      button.btn.btn-link.dropdown-toggle aria-expanded='false' aria-haspopup='true' data-toggle='dropdown'
+        span  Справочники
+      ul.dropdown-menu
+        li= link_to 'Регионы', regions_path
+        li= link_to 'Образование', educations_path
+        li= link_to 'Наименования вакансий', handbook_vacancies_path

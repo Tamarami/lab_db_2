@@ -1,0 +1,12 @@
+= form_for @handbook_vacancy do |f|
+  .form-group
+    = f.label :code, 'Код', class: 'control-label'
+    = f.text_field :code, class: 'form-control', autofocus: true
+  .form-group
+    = f.label :name, 'Наименование', class: 'control-label'
+    = f.text_field :name, class: 'form-control'
+  .btn-group
+    = link_to 'Назад', handbook_vacancies_path, class: 'btn btn-default'
+    = f.submit 'Сохранить', class: 'btn btn-primary'
+    - if @handbook_vacancy.persisted?
+      = link_to 'Удалить', handbook_vacancy_path(@handbook_vacancy), data: { confirm: 'Вы уверены?' }, method: :delete, class: 'btn btn-danger'

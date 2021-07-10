@@ -1,0 +1,29 @@
+.row
+  .col-xs-12
+    .text-right
+      = link_to 'Добавить новую вакансию', new_vacancy_path, class: 'btn btn-info'
+    .margin-top-20
+    table.table.table-striped.table-bordered.table-hover.table-sm.table-responsive
+      thead
+        tr
+          th Профессия
+          th Количество вакансий
+          th Место работы
+          th Зарплата
+          th Требуемый уровень образования
+          th Требуемый стаж
+          th Знание английского языка
+          th Наличие водительских прав
+      tbody
+        - @vacancies.each do |item|
+          tr
+            td= item.name_profession
+            td= item.free_work_places
+            td= item.workplace_address
+            td= item.wage
+            td= item.applicant_education
+            td= item.experience
+            td= item.proficiency_languages
+            td= item.presence_driver_license
+
+/ employer_id, handbook_vacancy_id, region_id, education_id

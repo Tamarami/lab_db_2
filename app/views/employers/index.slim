@@ -1,0 +1,21 @@
+.row
+  .col-xs-12
+    .text-right
+      = link_to 'Добавить нового работодателя', new_employer_path, class: 'btn btn-info'
+    .margin-top-20
+    table.table.table-striped.table-bordered.table-hover.table-sm.table-responsive
+      thead
+        tr
+          th Регион
+          th Работодатель
+          th Фамилия контактного лица
+          th Телефон
+          th e_mail
+      tbody
+        - @employers.each do |item|
+          tr
+            td= item.region.to_s
+            td= link_to item.name, edit_employer_path(item)
+            td= item.contact_person_surname
+            td= item.contact_phone_number
+            td= item.contact_e_mail

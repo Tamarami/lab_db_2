@@ -1,0 +1,19 @@
+.row
+  .col-xs-12
+    .text-right
+      = link_to 'Добавить нового соискателя', new_user_path, class: 'btn btn-info'
+    .margin-top-20
+    table.table.table-striped.table-bordered.table-hover.table-sm.table-responsive
+      thead
+        tr
+          th Имя
+          th Фамилия
+          th Телефон
+          th e_mail
+      tbody
+        - @users.each do |item|
+          tr
+            td= link_to item.name, edit_user_path(item)
+            td= item.surname
+            td= item.phone_number
+            td= item.e_mail

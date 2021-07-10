@@ -1,0 +1,14 @@
+.row
+  .col-xs-12
+    .text-right
+      = link_to 'Добавить новый вид образования', new_education_path, class: 'btn btn-info'
+    table.table.table-striped.table-hover.table-responsive
+      thead
+        tr
+          th Код
+          th Наименование
+      tbody
+        - @educations.each do |item|
+          tr
+            td= item.code
+            td= link_to item.name, edit_education_path(item)

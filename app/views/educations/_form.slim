@@ -1,0 +1,12 @@
+= form_for @education do |f|
+  .form-group
+    = f.label :code, 'Код', class: 'control-label'
+    = f.text_field :code, class: 'form-control', autofocus: true
+  .form-group
+    = f.label :name, 'Наименование', class: 'control-label'
+    = f.text_field :name, class: 'form-control'
+  .btn-group
+    = link_to 'Назад', educations_path, class: 'btn btn-default'
+    = f.submit 'Сохранить', class: 'btn btn-primary'
+    - if @education.persisted?
+      = link_to 'Удалить', education_path(@education), data: { confirm: 'Вы уверены?' }, method: :delete, class: 'btn btn-danger'
