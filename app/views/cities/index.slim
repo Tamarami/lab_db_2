@@ -1,0 +1,17 @@
+.row
+  .col-xs-12
+    .text-right
+      = link_to 'Добавить новый город', new_city_path, class: 'btn btn-info'
+    table.table.table-striped.table-hover.table-responsive
+      thead
+        tr
+          th Почтовый индекс
+          th Наименование
+          th
+      tbody
+        - @cities.each do |item|
+          tr
+            td= item.postal_code
+            td= link_to item.name, edit_city_path(item.to_s)
+            - if item.persisted?
+              td= button_to 'Удалить', city_path(item.to_s), data: { confirm: 'Вы уверены?' }, method: :delete, class: 'btn btn-danger'

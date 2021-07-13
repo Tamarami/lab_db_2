@@ -1,0 +1,13 @@
+= form_for @city, as: :city, url: @city.persisted? ? { action: 'update' } : { action: 'create' }, method: @city.persisted? ? :put : :post do |f|
+  .form-group
+    = f.label :name, 'Наименование', class: 'control-label'
+    = f.text_field :name, class: 'form-control', autofocus: true
+  .form-group
+    = f.label :postal_code, 'Почтовый индекс', class: 'control-label'
+    = f.text_field :postal_code, class: 'form-control'
+  .form-group
+    = f.label :country_code, 'Страна', class: 'control-label'
+    = f.collection_select :country_code, Country.all, :country_code, :country_name, { include_blank: true }
+  .btn-group
+    = link_to 'Назад', cities_path, class: 'btn btn-default'
+    = f.submit 'Сохранить', class: 'btn btn-primary'

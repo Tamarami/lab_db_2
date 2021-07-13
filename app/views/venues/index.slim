@@ -1,0 +1,23 @@
+.row
+  .col-xs-12
+    .text-right
+      = link_to 'Добавить новое место проведения', new_venue_path, class: 'btn btn-info'
+    table.table.table-striped.table-hover.table-responsive
+      thead
+        tr
+          th Наименование
+          th Адрес
+          th Тип
+          th Почтовый индекс
+          th Код страны
+          th
+      tbody
+        - @venues.each do |item|
+          tr
+            td= link_to item.name, edit_venue_path(item)
+            td= item.street_address
+            td= item.type_venue
+            td= item.postal_code
+            td= item.country_code
+            - if item.persisted?
+              td= button_to 'Удалить', venue_path(item), data: { confirm: 'Вы уверены?' }, method: :delete, class: 'btn btn-danger'

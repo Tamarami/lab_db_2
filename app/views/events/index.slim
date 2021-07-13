@@ -1,0 +1,32 @@
+.row
+  .col-xs-12
+    .text-right
+      = link_to 'Добавить новое событие', new_event_path, class: 'btn btn-info'
+    h1 Поиск
+    .form-inline
+      = form_tag events_path, method: :get do
+        .form-group
+          = label :venue_id, 'Место проведения', class: 'control-label margin-right-10'
+          = select_tag :venue_id, options_for_select(Venue.all.map { |g| [g.name, g.venue_id] }.sort, params[:venue_id]), include_blank: true, class: 'margin-right-10', onchange: 'this.form.submit()'
+        .form-group
+          = label :query, 'Событие', class: 'control-label margin-right-10'
+          = text_field_tag :query, params[:query], class: 'form-control margin-right-10', placeholder: 'Поиск по названию события'
+        = submit_tag 'Найти', class: 'btn btn-primary'
+    hr
+    table.table.table-striped.table-hover.table-responsive
+      thead
+        tr
+          th Место проведения
+          th Событие
+          th Начало
+          th Окончание
+          th
+      tbody
+        - @events.each do |item|
+          tr
+            td= item.venue&.name
+            td= link_to item.title, edit_event_path(item)
+            td= item.starts.strftime("%d.%m.%Y")
+            td= item.ends.strftime("%d.%m.%Y")
+            - if item.persisted?
+              td= button_to 'Удалить', event_path(item), data: { confirm: 'Вы уверены?' }, method: :delete, class: 'btn btn-danger'

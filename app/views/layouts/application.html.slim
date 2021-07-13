@@ -15,5 +15,7 @@ html
     .container-fluid
       .row
         = render 'shared/header'
+        - flash.each do |message_type, message|
+          = content_tag(:div, message, class: "alert alert-#{message_type}")
         .col-xs-12
           = yield

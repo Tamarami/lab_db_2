@@ -1,0 +1,10 @@
+= form_for @country, as: :country, url: @country.persisted? ? { action: 'update' } : { action: 'create' }, method: @country.persisted? ? :put : :post do |f|
+  .form-group
+    = f.label :country_code, 'Код', class: 'control-label'
+    = f.text_field :country_code, class: 'form-control', autofocus: true
+  .form-group
+    = f.label :country_name, 'Наименование', class: 'control-label'
+    = f.text_field :country_name, class: 'form-control'
+  .btn-group
+    = link_to 'Назад', countries_path, class: 'btn btn-default'
+    = f.submit 'Сохранить', class: 'btn btn-primary'
